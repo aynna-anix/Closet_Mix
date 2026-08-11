@@ -1,0 +1,584 @@
+/* ==========================================
+   RESET
+========================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #666666;
+
+    color: #171717;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ==========================================
+   SITE PC
+========================================== */
+
+.site {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+}
+
+
+/* ==========================================
+   MENU LATERAL
+========================================== */
+
+.sidebar {
+    width: 180px;
+    min-height: 100vh;
+
+    flex-shrink: 0;
+
+    padding: 25px 20px;
+
+    background: #292929;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.sidebar-title {
+    color: #ddb7e9;
+
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+
+/* ==========================================
+   ITENS DO MENU
+========================================== */
+
+.menu-item {
+    width: 100%;
+    height: 125px;
+
+    background: #b6ba99;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #171717;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-3px);
+
+    opacity: 0.9;
+}
+
+.logo-item {
+    background: #eee5d8;
+}
+
+.logo-item img {
+    width: 75%;
+    height: 75%;
+
+    object-fit: contain;
+}
+
+.carrinho {
+    background: #eee5d8;
+}
+
+.menu-item span {
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   CONTEÚDO
+========================================== */
+
+.conteudo {
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: 100vh;
+
+    background: #eee5d8;
+
+    padding: 25px 35px;
+}
+
+
+/* ==========================================
+   TOPO
+========================================== */
+
+.topo {
+    width: 100%;
+
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #c9c4b9;
+
+    margin-bottom: 20px;
+}
+
+.titulo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.titulo span {
+    color: #ddb7e9;
+
+    font-size: 18px;
+}
+
+.titulo h1 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+
+    font-weight: normal;
+}
+
+.topo-acoes {
+    display: flex;
+
+    gap: 25px;
+}
+
+.topo-acoes a {
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.topo-acoes a:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   BANNER
+========================================== */
+
+.banner {
+    width: 100%;
+
+    min-height: 300px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #555;
+
+    border-radius: 3px;
+}
+
+.banner > img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 300px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.banner::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================
+   TEXTO DO BANNER
+========================================== */
+
+.banner-texto {
+    position: absolute;
+
+    z-index: 2;
+
+    top: 15%;
+    left: 7%;
+
+    color: white;
+}
+
+.banner-texto > span {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    background: rgba(50, 50, 50, 0.65);
+
+    font-size: 10px;
+}
+
+.banner-texto h2 {
+    margin: 15px 0 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(30px, 4vw, 58px);
+
+    font-weight: normal;
+
+    line-height: 0.95;
+}
+
+.banner-texto a {
+    display: inline-flex;
+
+    margin-top: 35px;
+
+    padding: 12px 25px;
+
+    background: #aeb493;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    transition: background 0.2s ease;
+}
+
+.banner-texto a:hover {
+    background: #929871;
+}
+
+
+/* ==========================================
+   CATEGORIAS
+========================================== */
+
+.categorias {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    background: #cdd1bf;
+}
+
+.categorias > h2 {
+    margin: 0 0 20px;
+
+    font-family: Georgia, serif;
+
+    font-size: 30px;
+
+    font-weight: normal;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.grid-categorias {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(150px, 1fr));
+
+    gap: 15px;
+}
+
+
+/* ==========================================
+   CARDS
+========================================== */
+
+.categoria {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 1.5 / 1;
+
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    background: #ddd;
+
+    text-decoration: none;
+}
+
+.categoria img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.3s ease;
+}
+
+.categoria:hover img {
+    transform: scale(1.06);
+}
+
+.categoria::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 0, 0, 0.55)
+    );
+}
+
+.categoria span {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 15px;
+    bottom: 12px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    text-shadow: 1px 1px 3px #000;
+}
+
+
+/* ==========================================
+   SOBRE
+========================================== */
+
+.sobre {
+    padding: 35px 15px;
+
+    text-align: center;
+}
+
+.sobre h2 {
+    margin: 0;
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    font-weight: normal;
+}
+
+.sobre p {
+    margin: 12px 0 0;
+
+    color: #333;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   NOTEBOOK
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 150px;
+
+        padding: 20px 15px;
+    }
+
+    .menu-item {
+        height: 105px;
+    }
+
+    .conteudo {
+        padding: 20px 25px;
+    }
+
+    .grid-categorias {
+        grid-template-columns:
+            repeat(3, minmax(120px, 1fr));
+
+        gap: 10px;
+    }
+
+}
+
+
+/* ==========================================
+   TELA MENOR
+========================================== */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 120px;
+
+        padding: 15px 10px;
+    }
+
+    .menu-item {
+        height: 90px;
+    }
+
+    .menu-item span {
+        font-size: 10px;
+    }
+
+    .conteudo {
+        padding: 15px;
+    }
+
+    .topo-acoes {
+        gap: 10px;
+    }
+
+    .grid-categorias {
+        grid-template-columns:
+            repeat(2, minmax(120px, 1fr));
+    }
+
+}
+
+
+/* ==========================================
+   TELA MUITO PEQUENA
+========================================== */
+
+@media (max-width: 600px) {
+
+    .site {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+
+        padding: 10px;
+
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .menu-item {
+        width: 90px;
+        min-width: 90px;
+        height: 60px;
+    }
+
+    .logo-item img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .conteudo {
+        width: 100%;
+    }
+
+    .banner {
+        min-height: 250px;
+    }
+
+    .banner > img {
+        min-height: 250px;
+    }
+
+    .banner-texto h2 {
+        font-size: 30px;
+    }
+
+    .topo-acoes {
+        display: none;
+    }
+
+}
+
+
+/* ==========================================
+   ACESSIBILIDADE
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+    }
+
+}
