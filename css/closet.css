@@ -1,0 +1,371 @@
+
+/* ==========================================
+   CORES DO CLOSET MIX
+========================================== */
+
+:root {
+    --azul-mar: #607D86;
+    --azul-escuro: #35434A;
+    --caramelo: #B98250;
+    --caramelo-claro: #D6B18B;
+    --dourado: #C6A15B;
+    --off-white: #F8F5EF;
+    --branco: #FFFFFF;
+    --texto: #454545;
+}
+
+
+/* ==========================================
+   CONFIGURAÇÕES GERAIS
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--off-white);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* ==========================================
+   ESTRUTURA PRINCIPAL
+========================================== */
+
+.site {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px clamp(15px, 5vw, 70px);
+}
+
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+.topo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0 25px;
+    border-bottom: 1px solid var(--caramelo-claro);
+}
+
+.menu-botao {
+    border: none;
+    background: none;
+    color: var(--azul-escuro);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    width: clamp(90px, 15vw, 150px);
+    height: auto;
+    object-fit: contain;
+}
+
+.carrinho {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--azul-escuro);
+    font-size: 25px;
+}
+
+
+/* ==========================================
+   MENU LATERAL
+========================================== */
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+
+    width: min(280px, 80%);
+    height: 100vh;
+
+    padding: 35px 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    transform: translateX(-100%);
+    visibility: hidden;
+
+    transition: transform 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-lateral.ativo {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.sidebar-title {
+    margin-bottom: 20px;
+    color: var(--caramelo-claro);
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.menu-lateral a {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    transition: color 0.2s;
+}
+
+.menu-lateral a:hover {
+    color: var(--caramelo-claro);
+}
+
+
+/* ==========================================
+   FUNDO DO MENU
+========================================== */
+
+.fundo-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 15;
+
+    background-color: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fundo-menu.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ==========================================
+   TÍTULO DA PÁGINA
+========================================== */
+
+.conteudo {
+    width: 100%;
+    padding: 35px 0;
+}
+
+.titulo-pagina {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.titulo-pagina span {
+    color: var(--caramelo);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.titulo-pagina h1 {
+    margin: 10px 0;
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+.titulo-pagina p {
+    color: var(--texto);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   CAMPO DE BUSCA
+========================================== */
+
+.busca {
+    width: min(100%, 650px);
+    margin: 0 auto 25px;
+}
+
+.busca input {
+    width: 100%;
+    padding: 15px 20px;
+
+    border: 1px solid var(--caramelo-claro);
+    border-radius: 30px;
+
+    background-color: var(--branco);
+    color: var(--texto);
+
+    outline: none;
+}
+
+.busca input:focus {
+    border-color: var(--azul-mar);
+    box-shadow: 0 0 0 3px rgba(96, 125, 134, 0.15);
+}
+
+
+/* ==========================================
+   FILTROS DE CATEGORIA
+========================================== */
+
+.filtros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-bottom: 35px;
+}
+
+.filtro {
+    padding: 10px 20px;
+
+    border: 1px solid var(--azul-mar);
+    border-radius: 25px;
+
+    background-color: transparent;
+    color: var(--azul-escuro);
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.filtro:hover,
+.filtro.ativo {
+    background-color: var(--azul-mar);
+    color: var(--branco);
+}
+
+
+/* ==========================================
+   GRADE DE PRODUTOS
+========================================== */
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 25px;
+}
+
+
+/* ==========================================
+   CARTÃO DO PRODUTO
+========================================== */
+
+.produto {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--branco);
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(53, 67, 74, 0.08);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.produto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(53, 67, 74, 0.15);
+}
+
+.produto img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.produto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 18px;
+}
+
+.produto-info h2 {
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: 19px;
+}
+
+.produto-info p {
+    color: var(--caramelo);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   BOTÃO ADICIONAR AO CARRINHO
+========================================== */
+
+.adicionar {
+    width: 100%;
+    margin-top: auto;
+    padding: 12px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.adicionar:hover {
+    background-color: var(--caramelo);
+}
+
+
+/* ==========================================
+   MENSAGEM DE CATÁLOGO VAZIO
+========================================== */
+
+#semProdutos {
+    padding: 35px 10px;
+    text-align: center;
+    color: var(--azul-escuro);
+    font-size: 17px;
+}

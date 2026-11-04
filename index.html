@@ -5,24 +5,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Closet Mix</title>
+    <title>Login | Closet Mix</title>
 
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+
+
+    <!-- CSS das configurações -->
+<link rel="stylesheet" href="javascript/configuracoes.js">
 </head>
 
 <body>
 
-    <main class="pagina">
+    <main class="pagina-login">
 
-        <div class="logo">
-            <img src="imagens /LOGOS .png" alt="Closet Mix">
-        </div>
+        <section class="apresentacao">
+            <div class="marca">
+                <h1>CLOSET MIX</h1>
+                <span>MODA COM NOVOS CAMINHOS</span>
+            </div>
 
-        <a href="entrou.html" class="botao">
-            ENTRAR
-        </a>
+            <div class="mensagem">
+                <h2>Seu estilo, novas histórias.</h2>
+                <p>
+                    Descubra uma nova forma de consumir moda,
+                    com peças especiais e escolhas mais conscientes.
+                </p>
+            </div>
+        </section>
+
+        <section class="area-login">
+
+            <div class="formulario" id="formLogin">
+
+                <h2>Bem-vindo(a)!</h2>
+                <p class="subtitulo">Entre na sua conta para continuar.</p>
+
+                <form id="loginForm">
+
+                    <label for="email">E-mail</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+
+                    <label for="senha">Senha</label>
+                    <input
+                        type="password"
+                        id="senha"
+                        placeholder="Digite sua senha"
+                        required
+                    >
+
+                            <p id="erroLogin" class="mensagem-erro"></p>
+
+                    <a href="inicio.html"><button type="submit">ENTRAR</button>
+                   </a>
+                
+
+                </form>
+
+                <p class="cadastro">
+                    Ainda não tem uma conta?
+                    <a href="#" id="abrirCadastro">Cadastre-se</a>
+                </p>
+
+            </div>
+
+            <div class="formulario" id="formCadastro" hidden>
+
+                <h2>Crie sua conta</h2>
+                <p class="subtitulo">Faça parte do Closet Mix.</p>
+
+                <form id="cadastroForm">
+
+                    <label for="nomeCadastro">Nome</label>
+                    <input
+                        type="text"
+                        id="nomeCadastro"
+                        placeholder="Digite seu nome"
+                        required
+                    >
+
+                   <label for="emailCadastro">E-mail</label>
+
+<input
+    type="email"
+    id="emailCadastro"
+    placeholder="Digite seu e-mail"
+    required
+>
+
+<p id="erroEmail" class="mensagem-erro"></p>
+                    >
+
+                    <label for="senhaCadastro">Senha</label>
+                    <input
+                        type="password"
+                        id="senhaCadastro"
+                        placeholder="Crie uma senha"
+                        minlength="8"
+                        required
+                    >
+
+                    <button type="submit">CRIAR CONTA</button>
+
+                </form>
+
+                <p class="cadastro">
+                    Já possui uma conta?
+                    <a href="#" id="voltarLogin">Fazer login</a>
+                </p>
+
+            </div>
+
+        </section>
 
     </main>
+
+
+
+
+
+
+
+<!-- ==========================================
+     BOTÃO DE CONFIGURAÇÕES
+========================================== -->
+
+<button
+    type="button"
+    id="abrirConfiguracoes"
+    class="botao-abrir-configuracoes"
+    aria-label="Abrir configurações"
+    aria-expanded="false"
+    title="Configurações"
+>
+    ⚙
+</button>
+
+
+<!-- ==========================================
+     FUNDO ESCURO DO MENU
+========================================== -->
+
+<button
+    type="button"
+    id="fundoConfiguracoes"
+    class="fundo-configuracoes"
+    aria-label="Fechar configurações"
+    tabindex="-1"
+></button>
+
+
+<!-- ==========================================
+     PAINEL DE CONFIGURAÇÕES
+========================================== -->
+
+<aside
+    id="painelConfiguracoes"
+    class="painel-configuracoes"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloConfiguracoes"
+    aria-hidden="true"
+>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-configuracoes">
+
+        <div>
+            <span class="subtitulo-configuracoes">CLOSET MIX</span>
+            <h2 id="tituloConfiguracoes">Configurações</h2>
+        </div>
+
+        <button
+            type="button"
+            id="fecharConfiguracoes"
+            class="botao-fechar-configuracoes"
+            aria-label="Fechar configurações"
+        >
+            ×
+        </button>
+
+    </header>
+
+
+    <!-- APARÊNCIA -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>☼</span>
+            Aparência
+        </h3>
+
+        <div class="item-configuracao">
+
+            <label for="temaSite">Modo de exibição</label>
+
+            <select id="temaSite">
+
+                <option value="claro">Modo claro</option>
+                <option value="escuro">Modo escuro</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACESSIBILIDADE -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>◉</span>
+            Acessibilidade
+        </h3>
+
+
+        <!-- TAMANHO DO TEXTO -->
+        <div class="item-configuracao">
+
+            <label for="tamanhoTexto">Tamanho do texto</label>
+
+            <select id="tamanhoTexto">
+
+                <option value="normal">Normal</option>
+                <option value="grande">Grande</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ALTO CONTRASTE -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="altoContraste">
+                Alto contraste
+            </label>
+
+            <input
+                type="checkbox"
+                id="altoContraste"
+            >
+
+        </div>
+
+
+        <!-- REDUZIR ANIMAÇÕES -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="reduzirMovimento">
+                Reduzir animações
+            </label>
+
+            <input
+                type="checkbox"
+                id="reduzirMovimento"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMAÇÕES -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>⚙</span>
+            Preferências
+        </h3>
+
+        <p class="descricao-configuracoes">
+            Suas configurações ficam salvas neste navegador.
+        </p>
+
+        <button
+            type="button"
+            id="restaurarConfiguracoes"
+            class="botao-restaurar"
+        >
+            Restaurar configurações padrão
+        </button>
+
+        <p
+            id="statusConfiguracoes"
+            class="status-configuracoes"
+            aria-live="polite"
+        ></p>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-configuracoes">
+        Closet Mix © 2026
+    </footer>
+
+</aside>
+
+        <script src="javascript/configuracoes.js"></script>
+    <script src="javascript/login.js"></script>
 
 </body>
 

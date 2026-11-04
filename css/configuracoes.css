@@ -1,0 +1,419 @@
+
+/* ==========================================
+   CLOSET MIX - CONFIGURAÇÕES
+========================================== */
+
+
+/* ==========================================
+   CORES DO MODO ESCURO
+========================================== */
+
+:root[data-tema="escuro"] {
+
+    --azul-mar: #88AAB4;
+    --azul-escuro: #35434A;
+    --caramelo: #E0B184;
+    --caramelo-claro: #78624F;
+    --dourado: #E2C17B;
+
+    --off-white: #171F22;
+    --branco: #263238;
+    --texto: #E9EEEE;
+
+}
+
+
+/* ==========================================
+   AJUSTES GERAIS DO MODO ESCURO
+========================================== */
+
+:root[data-tema="escuro"] body {
+    background-color: var(--off-white);
+    color: var(--texto);
+}
+
+:root[data-tema="escuro"] h1,
+:root[data-tema="escuro"] h2,
+:root[data-tema="escuro"] h3,
+:root[data-tema="escuro"] h4,
+:root[data-tema="escuro"] label,
+:root[data-tema="escuro"] .menu-botao,
+:root[data-tema="escuro"] .carrinho,
+:root[data-tema="escuro"] .filtro,
+:root[data-tema="escuro"] .produto-info h2,
+:root[data-tema="escuro"] .titulo-pagina h1 {
+    color: var(--texto);
+}
+
+
+/* ==========================================
+   CAMPOS E CARTÕES NO MODO ESCURO
+========================================== */
+
+:root[data-tema="escuro"] input,
+:root[data-tema="escuro"] select,
+:root[data-tema="escuro"] textarea {
+    background-color: #1D292E;
+    color: var(--texto);
+    border-color: var(--caramelo-claro);
+}
+
+:root[data-tema="escuro"] .produto,
+:root[data-tema="escuro"] .categoria,
+:root[data-tema="escuro"] .caixa-login {
+    background-color: var(--branco);
+}
+
+:root[data-tema="escuro"] .produto-info p {
+    color: var(--caramelo);
+}
+
+:root[data-tema="escuro"] .filtro.ativo {
+    background-color: var(--azul-mar);
+    color: #172126;
+}
+
+
+/* ==========================================
+   BOTÃO FLUTUANTE DE CONFIGURAÇÕES
+========================================== */
+
+.botao-abrir-configuracoes {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 990;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    font-size: 26px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.botao-abrir-configuracoes:hover {
+    background-color: var(--caramelo);
+    transform: rotate(30deg);
+}
+
+
+/* ==========================================
+   FUNDO DO PAINEL
+========================================== */
+
+.fundo-configuracoes {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+
+    border: none;
+    background-color: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.fundo-configuracoes.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ==========================================
+   PAINEL LATERAL
+========================================== */
+
+.painel-configuracoes {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+
+    width: min(390px, calc(100vw - 20px));
+    height: 100vh;
+
+    overflow-y: auto;
+
+    padding: 25px;
+
+    background-color: var(--branco);
+    color: var(--texto);
+
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+
+    transform: translateX(105%);
+    visibility: hidden;
+
+    transition: transform 0.3s, visibility 0.3s;
+}
+
+.painel-configuracoes.aberto {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+
+/* ==========================================
+   CABEÇALHO DO PAINEL
+========================================== */
+
+.cabecalho-configuracoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid var(--caramelo-claro);
+}
+
+.subtitulo-configuracoes {
+    color: var(--caramelo);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.cabecalho-configuracoes h2 {
+    margin-top: 7px;
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: 25px;
+}
+
+:root[data-tema="escuro"] .cabecalho-configuracoes h2 {
+    color: var(--texto);
+}
+
+.botao-fechar-configuracoes {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--off-white);
+    color: var(--texto);
+
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   GRUPOS DE CONFIGURAÇÕES
+========================================== */
+
+.grupo-configuracoes {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--caramelo-claro);
+}
+
+.grupo-configuracoes h3 {
+    margin-bottom: 17px;
+
+    color: var(--azul-escuro);
+    font-size: 16px;
+}
+
+.grupo-configuracoes h3 span {
+    margin-right: 8px;
+    color: var(--caramelo);
+}
+
+
+/* ==========================================
+   ITENS DE CONFIGURAÇÃO
+========================================== */
+
+.item-configuracao {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    margin-bottom: 18px;
+}
+
+.item-configuracao:last-child {
+    margin-bottom: 0;
+}
+
+.item-configuracao label {
+    color: var(--texto);
+    font-size: 14px;
+}
+
+
+/* ==========================================
+   CAIXAS DE SELEÇÃO
+========================================== */
+
+.item-configuracao select {
+    width: 100%;
+    padding: 11px;
+
+    border: 1px solid var(--caramelo-claro);
+    border-radius: 6px;
+
+    background-color: var(--off-white);
+    color: var(--texto);
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   OPÇÕES COM INTERRUPTOR
+========================================== */
+
+.item-checkbox {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-checkbox input {
+    width: 19px;
+    height: 19px;
+
+    accent-color: var(--azul-mar);
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   DESCRIÇÃO
+========================================== */
+
+.descricao-configuracoes {
+    color: var(--texto);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================
+   BOTÃO RESTAURAR
+========================================== */
+
+.botao-restaurar {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid var(--caramelo);
+    border-radius: 6px;
+
+    background-color: transparent;
+    color: var(--texto);
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-restaurar:hover {
+    background-color: var(--caramelo);
+    color: #FFFFFF;
+}
+
+
+/* ==========================================
+   STATUS DAS CONFIGURAÇÕES
+========================================== */
+
+.status-configuracoes {
+    margin-top: 12px;
+    color: var(--azul-mar);
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   RODAPÉ DO PAINEL
+========================================== */
+
+.rodape-configuracoes {
+    padding-top: 20px;
+
+    color: var(--texto);
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   AUMENTAR TAMANHO DA INTERFACE
+========================================== */
+
+:root[data-texto="grande"] body {
+    zoom: 1.08;
+}
+
+
+/* ==========================================
+   ALTO CONTRASTE
+========================================== */
+
+:root[data-contraste="alto"] :is(
+    input,
+    button,
+    select,
+    textarea,
+    .produto,
+    .categoria,
+    .caixa-login
+) {
+    border: 2px solid currentColor;
+}
+
+:root[data-contraste="alto"] :focus-visible {
+    outline: 3px solid var(--dourado);
+    outline-offset: 3px;
+}
+
+:root[data-contraste="alto"][data-tema="claro"] body {
+    color: #111111;
+}
+
+:root[data-contraste="alto"][data-tema="escuro"] body {
+    color: #FFFFFF;
+}
+
+
+/* ==========================================
+   REDUZIR ANIMAÇÕES
+========================================== */
+
+:root[data-movimento="reduzido"] *,
+:root[data-movimento="reduzido"] *::before,
+:root[data-movimento="reduzido"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+
+/* ==========================================
+   FOCO DOS BOTÕES
+========================================== */
+
+.botao-abrir-configuracoes:focus-visible,
+.botao-fechar-configuracoes:focus-visible,
+.botao-restaurar:focus-visible {
+    outline: 3px solid var(--dourado);
+    outline-offset: 3px;
+}

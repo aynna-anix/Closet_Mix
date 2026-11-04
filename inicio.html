@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inicial - Closet Mix</title>
+
+    <link rel="stylesheet" href="css/inicial.css">
+
+    <!-- CSS das configurações -->
+<link rel="stylesheet" href="css/configuracoes.css">
+
+</head>
+
+<body>
+
+    <main class="pagina">
+
+        <!-- CABEÇALHO -->
+
+        <header class="cabecalho">
+
+            <!-- BOTÃO DO MENU -->
+
+            <button class="menu-botao" id="menuBotao"
+                aria-label="Abrir menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- NOME DA LOJA -->
+
+            <h1>Closet Mix</h1>
+
+            <!-- ACESSO AO CARRINHO -->
+
+            <a href="carrinho.html" class="carrinho">
+                ♡
+            </a>
+
+        </header>
+
+
+        <!-- MENU SANDUÍCHE -->
+
+        <nav class="menu-lateral" id="menuLateral">
+
+            <h2 class="sidebar-title">MENU</h2>
+
+            <a href="inicio.html">Início</a>
+            <a href="closet.html">Meu Closet</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="entrou.html">Categorias</a>
+
+            <a href="#sobre">Sobre a loja</a>
+
+        </nav>
+
+        <!-- FUNDO ESCURO DO MENU -->
+
+        <div class="fundo-menu" id="fundoMenu"></div>
+
+
+        <!-- APRESENTAÇÃO -->
+
+        <section class="inicio">
+
+            <h2>
+                seu closet.
+                <br>
+                seu estilo.
+            </h2>
+
+            <p>
+                organize suas peças
+                <br>
+                e crie combinações.
+            </p>
+
+            <a href="closet.html" class="botao">
+                MONTAR LOOK
+            </a>
+
+        </section>
+
+
+        <!-- CATEGORIAS -->
+
+        <section class="categorias" id="categorias">
+
+            <h2>categorias</h2>
+
+            <div class="grid">
+
+                <a href="closet.html">
+                    <img src="imagens/feminino.jpg" alt="Feminino">
+                    <span>feminino</span>
+                </a>
+
+                <a href="closet.html">
+                    <img src="imagens/masculino.jpg" alt="Masculino">
+                    <span>masculino</span>
+                </a>
+
+                <a href="closet.html">
+                    <img src="imagens/infantil.jpg" alt="Infantil">
+                    <span>infantil</span>
+                </a>
+
+                <a href="closet.html">
+                    <img src="imagens/pet.jpg" alt="Pet">
+                    <span>pet</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="menu.js"></script>
+
+
+
+
+<!-- ==========================================
+     BOTÃO DE CONFIGURAÇÕES
+========================================== -->
+
+<button
+    type="button"
+    id="abrirConfiguracoes"
+    class="botao-abrir-configuracoes"
+    aria-label="Abrir configurações"
+    aria-expanded="false"
+    title="Configurações"
+>
+    ⚙
+</button>
+
+
+<!-- ==========================================
+     FUNDO ESCURO DO MENU
+========================================== -->
+
+<button
+    type="button"
+    id="fundoConfiguracoes"
+    class="fundo-configuracoes"
+    aria-label="Fechar configurações"
+    tabindex="-1"
+></button>
+
+
+<!-- ==========================================
+     PAINEL DE CONFIGURAÇÕES
+========================================== -->
+
+<aside
+    id="painelConfiguracoes"
+    class="painel-configuracoes"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloConfiguracoes"
+    aria-hidden="true"
+>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-configuracoes">
+
+        <div>
+            <span class="subtitulo-configuracoes">CLOSET MIX</span>
+            <h2 id="tituloConfiguracoes">Configurações</h2>
+        </div>
+
+        <button
+            type="button"
+            id="fecharConfiguracoes"
+            class="botao-fechar-configuracoes"
+            aria-label="Fechar configurações"
+        >
+            ×
+        </button>
+
+    </header>
+
+
+    <!-- APARÊNCIA -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>☼</span>
+            Aparência
+        </h3>
+
+        <div class="item-configuracao">
+
+            <label for="temaSite">Modo de exibição</label>
+
+            <select id="temaSite">
+
+                <option value="claro">Modo claro</option>
+                <option value="escuro">Modo escuro</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACESSIBILIDADE -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>◉</span>
+            Acessibilidade
+        </h3>
+
+
+        <!-- TAMANHO DO TEXTO -->
+        <div class="item-configuracao">
+
+            <label for="tamanhoTexto">Tamanho do texto</label>
+
+            <select id="tamanhoTexto">
+
+                <option value="normal">Normal</option>
+                <option value="grande">Grande</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ALTO CONTRASTE -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="altoContraste">
+                Alto contraste
+            </label>
+
+            <input
+                type="checkbox"
+                id="altoContraste"
+            >
+
+        </div>
+
+
+        <!-- REDUZIR ANIMAÇÕES -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="reduzirMovimento">
+                Reduzir animações
+            </label>
+
+            <input
+                type="checkbox"
+                id="reduzirMovimento"
+            >
+
+        </div>
+
+    </section>
+                <script src="javascript/configuracoes.js"></script>
+                <script src="javascript/menu.js"></script>
+
+    <!-- INFORMAÇÕES -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>⚙</span>
+            Preferências
+        </h3>
+
+        <p class="descricao-configuracoes">
+            Suas configurações ficam salvas neste navegador.
+        </p>
+
+        <button
+            type="button"
+            id="restaurarConfiguracoes"
+            class="botao-restaurar"
+        >
+            Restaurar configurações padrão
+        </button>
+
+        <p
+            id="statusConfiguracoes"
+            class="status-configuracoes"
+            aria-live="polite"
+        ></p>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-configuracoes">
+        Closet Mix © 2026
+    </footer>
+
+</aside>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,3 +24,504 @@
     </main>
 </body>
 </html>
+=======
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet Mix | Catálogo</title>
+    <link rel="stylesheet" href="css/closet.css">
+
+    <!-- CSS das configurações -->
+<link rel="stylesheet" href="css/configuracoes.css">
+</head>
+
+<body>
+
+    <main class="site">
+
+        <!-- CABEÇALHO -->
+        <header class="topo">
+
+            <button class="menu-botao" id="menuBotao"
+                aria-label="Abrir menu" aria-expanded="false">
+                ☰
+            </button>
+
+            <a href="entrou.html" class="logo">
+                <img src="imagens/LOGOS.png" alt="Closet Mix">
+            </a>
+
+            <a href="carrinho.html" class="carrinho">
+                ♡
+                <span id="quantidadeCarrinho">0</span>
+            </a>
+
+        </header>
+
+
+        <!-- MENU LATERAL -->
+        <nav class="menu-lateral" id="menuLateral">
+
+            <h2 class="sidebar-title">MENU</h2>
+
+            <a href="entrou.html">Início</a>
+            <a href="inicial.html">Explorar closet</a>
+            <a href="closet.html">Catálogo</a>
+            <a href="carrinho.html">Carrinho</a>
+
+        </nav>
+
+        <div class="fundo-menu" id="fundoMenu"></div>
+
+
+        <!-- CONTEÚDO -->
+        <section class="conteudo">
+
+            <header class="titulo-pagina">
+                <span>DESCUBRA SEU ESTILO</span>
+                <h1>Nosso catálogo</h1>
+                <p>Encontre peças especiais para fazer parte do seu closet.</p>
+            </header>
+
+
+            <!-- CAMPO DE BUSCA -->
+            <section class="busca">
+
+                <input
+                    type="text"
+                    id="CampoBusca"
+                    placeholder="O que você está procurando?"
+                    aria-label="Buscar produtos"
+                >
+
+            </section>
+
+
+            <!-- FILTROS -->
+            <section class="filtros">
+
+                <button class="filtro ativo" data-categoria="todos">
+                    Todos
+                </button>
+
+                <button class="filtro" data-categoria="feminino">
+                    Feminino
+                </button>
+
+                <button class="filtro" data-categoria="masculino">
+                    Masculino
+                </button>
+
+                <button class="filtro" data-categoria="infantil">
+                    Infantil
+                </button>
+
+                <button class="filtro" data-categoria="pet">
+                    Pet
+                </button>
+
+                <button class="filtro" data-categoria="sapatos">
+                    Sapatos
+                </button>
+
+                <button class="filtro" data-categoria="acessorios">
+                    Acessórios
+                </button>
+
+            </section>
+
+
+            <!-- CATÁLOGO DE PRODUTOS -->
+            <section class="catalogo" id="catalogo">
+
+
+                <!-- FEMININO -->
+                <article class="produto"
+                    data-categoria="feminino"
+                    data-nome="Vestido Floral">
+
+                    <img src="imagens/vestido.jpg" alt="Vestido Floral">
+
+                    <div class="produto-info">
+                        <h2>Vestido Floral</h2>
+                        <p>R$ 59,90</p>
+
+                        <button class="adicionar"
+                            data-id="1"
+                            data-nome="Vestido Floral"
+                            data-preco="59.90"
+                            data-imagem="imagens/vestido.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <article class="produto"
+                    data-categoria="feminino"
+                    data-nome="Blusa Bege">
+
+                    <img src="imagens/blusa.jpg" alt="Blusa Bege">
+
+                    <div class="produto-info">
+                        <h2>Blusa Bege</h2>
+                        <p>R$ 39,90</p>
+
+                        <button class="adicionar"
+                            data-id="2"
+                            data-nome="Blusa Bege"
+                            data-preco="39.90"
+                            data-imagem="imagens/blusa.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <!-- MASCULINO -->
+                <article class="produto"
+                    data-categoria="masculino"
+                    data-nome="Camiseta Básica">
+
+                    <img src="imagens/camiseta.jpg" alt="Camiseta Básica">
+
+                    <div class="produto-info">
+                        <h2>Camiseta Básica</h2>
+                        <p>R$ 29,90</p>
+
+                        <button class="adicionar"
+                            data-id="3"
+                            data-nome="Camiseta Básica"
+                            data-preco="29.90"
+                            data-imagem="imagens/camiseta.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <article class="produto"
+                    data-categoria="masculino"
+                    data-nome="Calça Jeans">
+
+                    <img src="imagens/calca.jpg" alt="Calça Jeans">
+
+                    <div class="produto-info">
+                        <h2>Calça Jeans</h2>
+                        <p>R$ 69,90</p>
+
+                        <button class="adicionar"
+                            data-id="4"
+                            data-nome="Calça Jeans"
+                            data-preco="69.90"
+                            data-imagem="imagens/calca.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <!-- INFANTIL -->
+                <article class="produto"
+                    data-categoria="infantil"
+                    data-nome="Conjunto Infantil">
+
+                    <img src="imagens/infantil-roupa.jpg"
+                        alt="Conjunto Infantil">
+
+                    <div class="produto-info">
+                        <h2>Conjunto Infantil</h2>
+                        <p>R$ 44,90</p>
+
+                        <button class="adicionar"
+                            data-id="5"
+                            data-nome="Conjunto Infantil"
+                            data-preco="44.90"
+                            data-imagem="imagens/infantil-roupa.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <!-- PET -->
+                <article class="produto"
+                    data-categoria="pet"
+                    data-nome="Cama para Pet">
+
+                    <img src="imagens/cama-pet.jpg" alt="Cama para Pet">
+
+                    <div class="produto-info">
+                        <h2>Cama para Pet</h2>
+                        <p>R$ 39,90</p>
+
+                        <button class="adicionar"
+                            data-id="6"
+                            data-nome="Cama para Pet"
+                            data-preco="39.90"
+                            data-imagem="imagens/cama-pet.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <!-- SAPATOS -->
+                <article class="produto"
+                    data-categoria="sapatos"
+                    data-nome="Tênis Casual">
+
+                    <img src="imagens/tenis.jpg" alt="Tênis Casual">
+
+                    <div class="produto-info">
+                        <h2>Tênis Casual</h2>
+                        <p>R$ 79,90</p>
+
+                        <button class="adicionar"
+                            data-id="7"
+                            data-nome="Tênis Casual"
+                            data-preco="79.90"
+                            data-imagem="imagens/tenis.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+
+                <!-- ACESSÓRIOS -->
+                <article class="produto"
+                    data-categoria="acessorios"
+                    data-nome="Bolsa Casual">
+
+                    <img src="imagens/bolsa.jpg" alt="Bolsa Casual">
+
+                    <div class="produto-info">
+                        <h2>Bolsa Casual</h2>
+                        <p>R$ 49,90</p>
+
+                        <button class="adicionar"
+                            data-id="8"
+                            data-nome="Bolsa Casual"
+                            data-preco="49.90"
+                            data-imagem="imagens/bolsa.jpg">
+                            Adicionar ao carrinho
+                        </button>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- MENSAGEM DE CATÁLOGO VAZIO -->
+            <p id="semProdutos" hidden>
+                Nenhum produto encontrado.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="menu.js"></script>
+    <script src="script.js"></script>
+
+
+
+<!-- ==========================================
+     BOTÃO DE CONFIGURAÇÕES
+========================================== -->
+
+<button
+    type="button"
+    id="abrirConfiguracoes"
+    class="botao-abrir-configuracoes"
+    aria-label="Abrir configurações"
+    aria-expanded="false"
+    title="Configurações"
+>
+    ⚙
+</button>
+
+
+<!-- ==========================================
+     FUNDO ESCURO DO MENU
+========================================== -->
+
+<button
+    type="button"
+    id="fundoConfiguracoes"
+    class="fundo-configuracoes"
+    aria-label="Fechar configurações"
+    tabindex="-1"
+></button>
+
+
+<!-- ==========================================
+     PAINEL DE CONFIGURAÇÕES
+========================================== -->
+
+<aside
+    id="painelConfiguracoes"
+    class="painel-configuracoes"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloConfiguracoes"
+    aria-hidden="true"
+>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho-configuracoes">
+
+        <div>
+            <span class="subtitulo-configuracoes">CLOSET MIX</span>
+            <h2 id="tituloConfiguracoes">Configurações</h2>
+        </div>
+
+        <button
+            type="button"
+            id="fecharConfiguracoes"
+            class="botao-fechar-configuracoes"
+            aria-label="Fechar configurações"
+        >
+            ×
+        </button>
+
+    </header>
+
+
+    <!-- APARÊNCIA -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>☼</span>
+            Aparência
+        </h3>
+
+        <div class="item-configuracao">
+
+            <label for="temaSite">Modo de exibição</label>
+
+            <select id="temaSite">
+
+                <option value="claro">Modo claro</option>
+                <option value="escuro">Modo escuro</option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACESSIBILIDADE -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>◉</span>
+            Acessibilidade
+        </h3>
+
+
+        <!-- TAMANHO DO TEXTO -->
+        <div class="item-configuracao">
+
+            <label for="tamanhoTexto">Tamanho do texto</label>
+
+            <select id="tamanhoTexto">
+
+                <option value="normal">Normal</option>
+                <option value="grande">Grande</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ALTO CONTRASTE -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="altoContraste">
+                Alto contraste
+            </label>
+
+            <input
+                type="checkbox"
+                id="altoContraste"
+            >
+
+        </div>
+
+
+        <!-- REDUZIR ANIMAÇÕES -->
+        <div class="item-configuracao item-checkbox">
+
+            <label for="reduzirMovimento">
+                Reduzir animações
+            </label>
+
+            <input
+                type="checkbox"
+                id="reduzirMovimento"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMAÇÕES -->
+    <section class="grupo-configuracoes">
+
+        <h3>
+            <span>⚙</span>
+            Preferências
+        </h3>
+
+        <p class="descricao-configuracoes">
+            Suas configurações ficam salvas neste navegador.
+        </p>
+
+        <button
+            type="button"
+            id="restaurarConfiguracoes"
+            class="botao-restaurar"
+        >
+            Restaurar configurações padrão
+        </button>
+
+        <p
+            id="statusConfiguracoes"
+            class="status-configuracoes"
+            aria-live="polite"
+        ></p>
+
+    </section>
+
+    <script src="javascript/configuracoes.js"></script>
+     <script src="javascript/menu.js"></script>
+
+
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-configuracoes">
+        Closet Mix © 2026
+    </footer>
+
+</aside>
+
+
+</body>
+</html>
+>>>>>>> b7f5bb4 (testes sem banco)

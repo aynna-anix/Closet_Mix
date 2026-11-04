@@ -1,0 +1,164 @@
+
+:root {
+    --azul-mar: #607D86;
+    --azul-escuro: #35434A;
+    --caramelo: #B98250;
+    --caramelo-claro: #D6B18B;
+    --dourado: #C6A15B;
+    --off-white: #F8F5EF;
+    --branco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: var(--caramelo);
+    color: var(--azul-escuro);
+}
+
+.pagina-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+/* APRESENTAÇÃO */
+
+.apresentacao {
+    background: var(--azul-mar);
+    color: var(--branco);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.marca h1 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    letter-spacing: 4px;
+}
+
+.marca span {
+    display: block;
+    margin-top: 10px;
+    color: var(--caramelo-claro);
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.mensagem {
+    max-width: 470px;
+    margin: auto 0;
+}
+
+.mensagem h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(35px, 4vw, 55px);
+    margin-bottom: 20px;
+}
+
+.mensagem p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* LOGIN */
+
+.area-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.formulario {
+    width: 100%;
+    max-width: 410px;
+    padding: 40px;
+    background: var(--off-white);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px #35434A20;
+}
+
+.formulario h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    color: #777;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid var(--caramelo-claro);
+    border-radius: 8px;
+    background: var(--branco);
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--azul-mar);
+    box-shadow: 0 0 0 2px #607D8620;
+}
+
+form button {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: var(--caramelo);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+form button:hover {
+    background: var(--dourado);
+    color: var(--azul-escuro);
+}
+
+.cadastro {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.cadastro a {
+    color: var(--azul-mar);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cadastro a:hover {
+    color: var(--caramelo);
+}
+
+.mensagem-erro {
+    color: #c0392b;
+    font-size: 13px;
+    margin-top: 5px;
+}

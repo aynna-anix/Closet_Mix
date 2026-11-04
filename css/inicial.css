@@ -1,0 +1,403 @@
+
+/* ==========================================
+   CONFIGURAÇÕES GERAIS E CORES
+========================================== */
+
+:root {
+    --azul-mar: #607D86;
+    --azul-escuro: #35434A;
+    --caramelo: #B98250;
+    --caramelo-claro: #D6B18B;
+    --dourado: #C6A15B;
+    --off-white: #F8F5EF;
+    --branco: #FFFFFF;
+    --texto: #454545;
+}
+
+/* Remove margens e espaçamentos padrão */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Rolagem suave */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Configurações do corpo */
+
+body {
+    min-height: 100vh;
+    background: var(--off-white);
+    color: var(--azul-escuro);
+    font-family: Arial, sans-serif;
+}
+
+/* Estrutura principal */
+
+.pagina {
+    width: 100%;
+    min-height: 100vh;
+    padding: clamp(18px, 4vw, 45px);
+}
+
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+/* Organização do cabeçalho */
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    padding-bottom: 22px;
+    border-bottom: 1px solid #35434A25;
+}
+
+/* Nome da loja */
+
+.cabecalho h1 {
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: clamp(23px, 3vw, 32px);
+    letter-spacing: 2px;
+}
+
+/* Botão do menu sanduíche */
+
+.menu-botao {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--azul-mar);
+    color: var(--branco);
+
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: background 0.3s;
+}
+
+/* Efeito do botão */
+
+.menu-botao:hover {
+    background: var(--caramelo);
+}
+
+/* Botão do carrinho */
+
+.carrinho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+    background: var(--azul-mar);
+    color: var(--branco);
+
+    font-size: 23px;
+    text-decoration: none;
+
+    transition: background 0.3s;
+}
+
+/* Efeito do carrinho */
+
+.carrinho:hover {
+    background: var(--caramelo);
+}
+
+
+/* ==========================================
+   MENU SANDUÍCHE
+========================================== */
+
+/* Menu que aparece ao clicar no botão */
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: min(280px, 85vw);
+    height: 100vh;
+
+    padding: 35px 25px;
+
+    background: var(--azul-escuro);
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    z-index: 1001;
+
+    transform: translateX(-100%);
+    visibility: hidden;
+
+    transition: transform 0.3s ease, visibility 0.3s;
+}
+
+/* Título do menu */
+
+.sidebar-title {
+    margin-bottom: 15px;
+
+    color: var(--caramelo-claro);
+    font-family: Georgia, serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+/* Links do menu */
+
+.menu-lateral a {
+    display: block;
+
+    padding: 13px 15px;
+    border-radius: 7px;
+
+    color: var(--branco);
+    font-size: 15px;
+    text-decoration: none;
+
+    transition: background 0.3s;
+}
+
+/* Efeito dos links */
+
+.menu-lateral a:hover {
+    background: var(--azul-mar);
+}
+
+/* Menu aberto */
+
+.menu-lateral.ativo {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+/* Fundo escuro atrás do menu */
+
+.fundo-menu {
+    position: fixed;
+    inset: 0;
+
+    background: #00000070;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 1000;
+
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Fundo visível com o menu aberto */
+
+.fundo-menu.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ==========================================
+   APRESENTAÇÃO INICIAL
+========================================== */
+
+/* Área de destaque da página */
+
+.inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    min-height: clamp(300px, 45vw, 440px);
+
+    margin: 25px 0 55px;
+    padding: clamp(25px, 6vw, 65px);
+
+    border-radius: 18px;
+
+    background: linear-gradient(
+        120deg,
+        var(--azul-escuro),
+        var(--azul-mar)
+    );
+
+    color: var(--branco);
+}
+
+/* Título principal */
+
+.inicio h2 {
+    margin-bottom: 18px;
+
+    font-family: Georgia, serif;
+    font-size: clamp(35px, 6vw, 65px);
+    font-weight: normal;
+    line-height: 1.1;
+}
+
+/* Texto de apresentação */
+
+.inicio p {
+    margin-bottom: 28px;
+
+    color: var(--off-white);
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   BOTÃO MONTAR LOOK
+========================================== */
+
+/* Aparência do botão */
+
+.botao {
+    display: inline-block;
+
+    padding: 15px 28px;
+    border-radius: 6px;
+
+    background: var(--caramelo);
+    color: var(--branco);
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    transition: background 0.3s, transform 0.3s;
+}
+
+/* Efeito do botão */
+
+.botao:hover {
+    background: var(--dourado);
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================
+   SEÇÃO DE CATEGORIAS
+========================================== */
+
+/* Área das categorias */
+
+.categorias {
+    width: 100%;
+}
+
+/* Título das categorias */
+
+.categorias h2 {
+    margin-bottom: 25px;
+
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: clamp(25px, 3vw, 32px);
+    font-weight: normal;
+}
+
+
+/* ==========================================
+   GRADE DE CATEGORIAS
+========================================== */
+
+/* Organização automática dos cartões */
+
+.grid {
+    display: grid;
+
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 220px), 1fr)
+    );
+
+    gap: clamp(15px, 3vw, 25px);
+}
+
+/* Cartões individuais */
+
+.grid a {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+    border-radius: 12px;
+
+    background: var(--branco);
+    color: var(--azul-escuro);
+
+    text-decoration: none;
+
+    box-shadow: 0 5px 18px #35434A12;
+
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito dos cartões */
+
+.grid a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 9px 22px #35434A25;
+}
+
+
+/* ==========================================
+   IMAGENS DAS CATEGORIAS
+========================================== */
+
+/* Ajuste das imagens */
+
+.grid img {
+    display: block;
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+
+    transition: transform 0.4s;
+}
+
+/* Efeito de aproximação */
+
+.grid a:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================
+   NOME DA CATEGORIA
+========================================== */
+
+/* Texto abaixo das imagens */
+
+.grid span {
+    padding: 18px 12px;
+
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: 18px;
+
+    text-align: center;
+}

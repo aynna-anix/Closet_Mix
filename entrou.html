@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,66 +15,67 @@
 
     <main class="site">
 
+        <!-- CABEÇALHO -->
+        <header class="topo">
+
+            <button
+                class="menu-botao"
+                id="menuBotao"
+                aria-label="Abrir menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <a href="entrou.html" class="logo">
+                <img src="imagens/LOGOS.png" alt="Closet Mix">
+            </a>
+
+            <a href="carrinho.html" class="carrinho">
+                ♡
+            </a>
+
+        </header>
+
+
         <!-- MENU LATERAL -->
-        <aside class="sidebar">
+        <nav class="menu-lateral" id="menuLateral">
 
-            <div class="sidebar-title">
-                MENU
-            </div>
+            <h2 class="sidebar-title">MENU</h2>
 
-            <a href="entrou.html" class="menu-item logo-item">
-                <img src="imagens /LOGOS .png" alt="Closet Mix">
-            </a>
+            <a href="inicio.html">Início</a>
+            <a href="entrou.html">Explorar</a>
+            <a href="closet.html">Catálogo</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#sobre">Sobre a loja</a>
 
-            <a href="inicial.html" class="menu-item">
-                <span>INICIAL</span>
-            </a>
+        </nav>
 
-            <a href="carrinho.html" class="menu-item carrinho">
-                <span>CARRINHO</span>
-            </a>
-
-        </aside>
+        <div class="fundo-menu" id="fundoMenu"></div>
 
 
-        <!-- CONTEÚDO -->
+        <!-- CONTEÚDO PRINCIPAL -->
         <section class="conteudo">
-
-            <header class="topo">
-
-                <div class="titulo">
-                    <span>✦</span>
-                    <h1>ENTROU</h1>
-                </div>
-
-                <div class="topo-acoes">
-                    <a href="inicial.html">INÍCIO</a>
-                    <a href="carrinho.html">CARRINHO</a>
-                </div>
-
-            </header>
-
 
             <!-- BANNER -->
             <section class="banner">
 
                 <img
                     src="imagens/banner.jpg"
-                    alt="Nova coleção Closet Mix"
-                >
+                    alt="Nova coleção Closet Mix">
 
                 <div class="banner-texto">
 
                     <span>NOVA COLEÇÃO</span>
 
-                    <h2>
+                    <h1>
                         O SEU ESTILO
                         <br>
                         COMEÇA AQUI
-                    </h2>
+                    </h1>
 
                     <a href="#categorias">
-                        EXPLORE CLOSET →
+                        EXPLORE O CLOSET →
                     </a>
 
                 </div>
@@ -84,38 +86,46 @@
             <!-- CATEGORIAS -->
             <section id="categorias" class="categorias">
 
-                <h2>categorias</h2>
+                <h2>Categorias</h2>
+
+                <p>Encontre peças que combinam com você.</p>
 
                 <div class="grid-categorias">
 
+                    <!-- FEMININO -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/feminino.jpg" alt="Feminino">
-                        <span>feminino</span>
+                        <span>Feminino</span>
                     </a>
 
+                    <!-- MASCULINO -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/masculino.jpg" alt="Masculino">
-                        <span>masculino</span>
+                        <span>Masculino</span>
                     </a>
 
+                    <!-- INFANTIL -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/infantil.jpg" alt="Infantil">
-                        <span>infantil</span>
+                        <span>Infantil</span>
                     </a>
 
+                    <!-- PET -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/pet.jpg" alt="Pet">
-                        <span>pet</span>
+                        <span>Pet</span>
                     </a>
 
+                    <!-- SAPATOS -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/sapatos.jpg" alt="Sapatos">
-                        <span>sapatos</span>
+                        <span>Sapatos</span>
                     </a>
 
+                    <!-- ACESSÓRIOS -->
                     <a href="closet.html" class="categoria">
                         <img src="imagens/acessorios.jpg" alt="Acessórios">
-                        <span>acessorios</span>
+                        <span>Acessórios</span>
                     </a>
 
                 </div>
@@ -123,23 +133,40 @@
             </section>
 
 
-            <!-- SOBRE -->
-            <section class="sobre">
+            <!-- SOBRE A LOJA -->
+            <section class="sobre" id="sobre">
 
-                <h2>
-                    por que escolher o closet mix?
-                </h2>
+                <h2>Por que escolher o Closet Mix?</h2>
 
                 <p>
-                    acreditamos que moda pode ser bonita,
-                    acessível e sustentável.
+                    Acreditamos que a moda pode ser bonita,
+                    acessível e sustentável. Aqui você encontra
+                    peças especiais que merecem uma nova história.
                 </p>
+
+                <a href="closet.html">
+                    Conheça nosso catálogo
+                </a>
 
             </section>
 
         </section>
 
+
+        <!-- RODAPÉ -->
+        <footer class="rodape">
+
+            <p>Closet Mix © 2026</p>
+
+            <p>Moda acessível, estilo e sustentabilidade.</p>
+
+        </footer>
+
     </main>
+
+
+    <!-- JAVASCRIPT DO MENU -->
+    <script src="javascript/menu.js"></script>
 
 </body>
 
