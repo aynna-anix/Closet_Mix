@@ -63,19 +63,24 @@ input {
 
 .topo {
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+
     padding: 10px 0 25px;
+
     border-bottom: 1px solid var(--caramelo-claro);
 }
 
 .menu-botao {
     border: none;
     background: none;
+
     color: var(--azul-escuro);
     font-size: 30px;
+
     cursor: pointer;
 }
 
@@ -95,6 +100,7 @@ input {
     display: flex;
     align-items: center;
     gap: 5px;
+
     color: var(--azul-escuro);
     font-size: 25px;
 }
@@ -125,7 +131,9 @@ input {
     transform: translateX(-100%);
     visibility: hidden;
 
-    transition: transform 0.3s ease, visibility 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .menu-lateral.ativo {
@@ -135,6 +143,7 @@ input {
 
 .sidebar-title {
     margin-bottom: 20px;
+
     color: var(--caramelo-claro);
     font-size: 22px;
     letter-spacing: 2px;
@@ -142,9 +151,12 @@ input {
 
 .menu-lateral a {
     padding: 10px 0;
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
     font-size: 16px;
-    transition: color 0.2s;
+
+    transition: color 0.2s ease;
 }
 
 .menu-lateral a:hover {
@@ -166,7 +178,9 @@ input {
     opacity: 0;
     visibility: hidden;
 
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 
 .fundo-menu.ativo {
@@ -176,13 +190,18 @@ input {
 
 
 /* ==========================================
-   TÍTULO DA PÁGINA
+   CONTEÚDO DA PÁGINA
 ========================================== */
 
 .conteudo {
     width: 100%;
     padding: 35px 0;
 }
+
+
+/* ==========================================
+   TÍTULO DA PÁGINA
+========================================== */
 
 .titulo-pagina {
     text-align: center;
@@ -198,6 +217,7 @@ input {
 
 .titulo-pagina h1 {
     margin: 10px 0;
+
     color: var(--azul-escuro);
     font-family: Georgia, serif;
     font-size: clamp(28px, 4vw, 42px);
@@ -234,6 +254,7 @@ input {
 
 .busca input:focus {
     border-color: var(--azul-mar);
+
     box-shadow: 0 0 0 3px rgba(96, 125, 134, 0.15);
 }
 
@@ -262,6 +283,7 @@ input {
     color: var(--azul-escuro);
 
     cursor: pointer;
+
     transition: 0.2s ease;
 }
 
@@ -278,7 +300,10 @@ input {
 
 .catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+
     gap: 25px;
 }
 
@@ -298,11 +323,14 @@ input {
 
     box-shadow: 0 4px 15px rgba(53, 67, 74, 0.08);
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .produto:hover {
     transform: translateY(-5px);
+
     box-shadow: 0 8px 20px rgba(53, 67, 74, 0.15);
 }
 
@@ -314,6 +342,7 @@ input {
 
 .produto-info {
     flex: 1;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -351,6 +380,7 @@ input {
     color: var(--branco);
 
     cursor: pointer;
+
     transition: background-color 0.2s ease;
 }
 
@@ -360,12 +390,14 @@ input {
 
 
 /* ==========================================
-   MENSAGEM DE CATÁLOGO VAZIO
+   CATÁLOGO VAZIO
 ========================================== */
 
 #semProdutos {
     padding: 35px 10px;
+
     text-align: center;
+
     color: var(--azul-escuro);
     font-size: 17px;
 }

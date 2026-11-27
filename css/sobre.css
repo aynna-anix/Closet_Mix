@@ -1,0 +1,288 @@
+
+/* ==========================================
+   CORES DO CLOSET MIX
+========================================== */
+
+:root {
+    --azul-mar: #607D86;
+    --azul-escuro: #35434A;
+    --caramelo: #B98250;
+    --caramelo-claro: #D6B18B;
+    --dourado: #C6A15B;
+    --off-white: #F8F5EF;
+    --branco: #FFFFFF;
+    --texto: #454545;
+}
+
+
+/* ==========================================
+   CONFIGURAÇÕES GERAIS
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--off-white);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ==========================================
+   ESTRUTURA
+========================================== */
+
+.site {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px clamp(15px, 5vw, 70px);
+}
+
+
+/* ==========================================
+   CABEÇALHO
+========================================== */
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 15px 0 25px;
+
+    border-bottom: 1px solid var(--caramelo-claro);
+}
+
+.logo {
+    color: var(--azul-escuro);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.voltar {
+    color: var(--azul-mar);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.voltar:hover {
+    color: var(--caramelo);
+}
+
+
+/* ==========================================
+   CONTEÚDO
+========================================== */
+
+.conteudo {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+
+/* ==========================================
+   TÍTULO
+========================================== */
+
+.titulo-pagina {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.titulo-pagina span {
+    color: var(--caramelo);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.titulo-pagina h1 {
+    margin: 15px 0;
+
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 5vw, 48px);
+}
+
+.titulo-pagina p {
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   APRESENTAÇÃO
+========================================== */
+
+.sobre {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    gap: 35px;
+    align-items: center;
+
+    margin-bottom: 60px;
+}
+
+.sobre-texto h2,
+.proposta h2,
+.valores h2 {
+    margin-bottom: 20px;
+
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: 28px;
+}
+
+.sobre-texto p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.sobre-destaque {
+    padding: 40px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    border-radius: 15px;
+}
+
+.sobre-destaque h2 {
+    margin-bottom: 15px;
+
+    color: var(--caramelo-claro);
+    font-family: Georgia, serif;
+    font-size: 27px;
+}
+
+
+/* ==========================================
+   NOSSA PROPOSTA
+========================================== */
+
+.proposta {
+    padding: 35px;
+    margin-bottom: 60px;
+
+    background-color: var(--branco);
+    border-left: 5px solid var(--caramelo);
+
+    border-radius: 10px;
+}
+
+.proposta p {
+    margin-bottom: 15px;
+}
+
+
+/* ==========================================
+   VALORES
+========================================== */
+
+.valores {
+    margin-bottom: 60px;
+}
+
+.valores h2 {
+    text-align: center;
+}
+
+.valores-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 20px;
+}
+
+.valor {
+    padding: 25px;
+
+    background-color: var(--branco);
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(53, 67, 74, 0.08);
+}
+
+.valor h3 {
+    margin-bottom: 10px;
+    color: var(--caramelo);
+    font-size: 20px;
+}
+
+
+/* ==========================================
+   MENSAGEM FINAL
+========================================== */
+
+.mensagem-final {
+    padding: 45px 25px;
+
+    text-align: center;
+
+    background-color: var(--caramelo-claro);
+    border-radius: 15px;
+}
+
+.mensagem-final h2 {
+    margin-bottom: 15px;
+
+    color: var(--azul-escuro);
+    font-family: Georgia, serif;
+    font-size: 28px;
+}
+
+.mensagem-final p {
+    margin-bottom: 25px;
+}
+
+
+/* ==========================================
+   BOTÃO
+========================================== */
+
+.botao {
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+
+    border-radius: 7px;
+
+    font-weight: bold;
+
+    transition: background-color 0.2s ease;
+}
+
+.botao:hover {
+    background-color: var(--caramelo);
+}
+
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+.rodape {
+    padding: 25px 0;
+
+    text-align: center;
+
+    border-top: 1px solid var(--caramelo-claro);
+
+    color: var(--azul-escuro);
+    font-size: 14px;
+}
