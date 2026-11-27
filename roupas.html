@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bazar & Brechó Online</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f7f4ef;
+      color: #1f2937;
+    }
+
+    /* Cabeçalho */
+    .topo {
+      background-color: #132238;
+      color: #f7f4ef;
+      padding: 20px 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo h1 {
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      font-size: 0.85rem;
+      color: #d9b99b;
+    }
+
+    .acoes-topo {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #campo-busca {
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: none;
+      width: 250px;
+      outline: none;
+    }
+
+    .btn-carrinho {
+      background-color: #d9b99b;
+      color: #132238;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-carrinho:hover {
+      background-color: #c8a27e;
+    }
+
+    /* Barra de Filtros */
+    .filtros {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px 5%;
+      background-color: #efe9e0;
+      border-bottom: 1px solid #dfd6c7;
+    }
+
+    .filtro-btn {
+      background: #fff;
+      border: 1px solid #cbbba0;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .filtro-btn.ativo,
+    .filtro-btn:hover {
+      background-color: #132238;
+      color: #fff;
+      border-color: #132238;
+    }
+
+    /* Vitrine */
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .vitrine {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      height: 240px;
+      background-color: #e5e7eb;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tag-condicao {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #132238;
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .card-info {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-info h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .detalhes {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .preco {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #132238;
+      margin-top: auto;
+      margin-bottom: 12px;
+    }
+
+    .btn-adicionar {
+      width: 100%;
+      padding: 10px;
+      background-color: #132238;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-adicionar:hover {
+      background-color: #1e3557;
+    }
+
+    .btn-adicionar:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    /* Modal da Sacola */
+    .modal-carrinho {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: flex-end;
+      z-index: 1000;
+    }
+
+    .modal-carrinho.oculto {
+      display: none;
+    }
+
+    .carrinho-conteudo {
+      background: #fff;
+      width: 100%;
+      max-width: 380px;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .carrinho-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 12px;
+    }
+
+    .btn-fechar {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .lista-carrinho {
+      list-style: none;
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 15px 0;
+    }
+
+    .item-carrinho {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+
+    .btn-remover {
+      background: #fee2e2;
+      color: #b91c1c;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    .carrinho-rodape {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 15px;
+    }
+
+    .total {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-finalizar {
+      width: 100%;
+      padding: 12px;
+      background-color: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #15803d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="topo">
+    <div class="logo">
+      <h1>Bazar Estilo Circular</h1>
+      <span>Peças únicas • Moda consciente</span>
+    </div>
+
+    <div class="acoes-topo">
+      <input type="text" id="campo-busca" placeholder="Buscar peça (ex: jaqueta, vestido)...">
+      <button id="btn-carrinho" class="btn-carrinho">
+        Sacola (<span id="contador-carrinho">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <!-- Filtros de Categoria -->
+  <nav class="filtros">
+    <button class="filtro-btn ativo" data-categoria="todos">Todos</button>
+    <button class="filtro-btn" data-categoria="casacos">Casacos & Jaquetas</button>
+    <button class="filtro-btn" data-categoria="blusas">Blusas & Vestidos</button>
+    <button class="filtro-btn" data-categoria="calcados">Calçados</button>
+    <button class="filtro-btn" data-categoria="acessorios">Bolsas & Acessórios</button>
+  </nav>
+
+  <!-- Vitrine de Produtos -->
+  <main class="container">
+    <section id="vitrine" class="vitrine"></section>
+  </main>
+
+  <!-- Modal / Gaveta da Sacola -->
+  <aside id="modal-carrinho" class="modal-carrinho oculto">
+    <div class="carrinho-conteudo">
+      <div class="carrinho-header">
+        <h2>Sua Sacola</h2>
+        <button id="fechar-carrinho" class="btn-fechar">&times;</button>
+      </div>
+
+      <ul id="lista-carrinho" class="lista-carrinho"></ul>
+
+      <div class="carrinho-rodape">
+        <p class="total">Total: <strong id="valor-total">R$ 0,00</strong></p>
+        <button id="finalizar-pedido" class="btn-finalizar">Finalizar Reserva</button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const produtos = [
+      {
+        id: 1,
+        nome: "Jaqueta Jeans Vintage",
+        categoria: "casacos",
+        tamanho: "M",
+        condicao: "Seminova",
+        preco: 79.90,
+        imagem: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 2,
+        nome: "Suéter Tricô Listrado",
+        categoria: "blusas",
+        tamanho: "G",
+        condicao: "Excelente",
+        preco: 55.00,
+        imagem: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 3,
+        nome: "Vestido Floral Retrô",
+        categoria: "blusas",
+        tamanho: "P",
+        condicao: "Novo com etiqueta",
+        preco: 68.00,
+        imagem: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 4,
+        nome: "Jaqueta Couro Ecológico",
+        categoria: "casacos",
+        tamanho: "G",
+        condicao: "Seminova",
+        preco: 110.00,
+        imagem: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 5,
+        nome: "Bolsa Estruturada Preta",
+        categoria: "acessorios",
+        tamanho: "Único",
+        condicao: "Excelente",
+        preco: 65.00,
+        imagem: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 6,
+        nome: "Tênis Casual Branco",
+        categoria: "calcados",
+        tamanho: "38",
+        condicao: "Bom estado",
+        preco: 85.00,
+        imagem: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 7,
+        nome: "Óculos de Sol Gatinho",
+        categoria: "acessorios",
+        tamanho: "Único",
+        condicao: "Seminovo",
+        preco: 35.00,
+        imagem: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=500&q=80"
+      },
+      {
+        id: 8,
+        nome: "Bota Coturno Tratorada",
+        categoria: "calcados",
+        tamanho: "37",
+        condicao: "Excelente",
+        preco: 95.00,
+        imagem: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=500&q=80"
+      }
+    ];
+
+    let sacola = [];
+    let categoriaAtual = "todos";
+    let termoBusca = "";
+
+    const vitrineEl = document.getElementById("vitrine");
+    const campoBuscaEl = document.getElementById("campo-busca");
+    const botoesFiltro = document.querySelectorAll(".filtro-btn");
+    const contadorCarrinhoEl = document.getElementById("contador-carrinho");
+    const modalCarrinhoEl = document.getElementById("modal-carrinho");
+    const listaCarrinhoEl = document.getElementById("lista-carrinho");
+    const valorTotalEl = document.getElementById("valor-total");
+
+    function formatarMoeda(valor) {
+      return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    }
+
+    function renderizarVitrine() {
+      vitrineEl.innerHTML = "";
+
+      const filtrados = produtos.filter((produto) => {
+        const bateCategoria = categoriaAtual === "todos" || produto.categoria === categoriaAtual;
+        const bateBusca = produto.nome.toLowerCase().includes(termoBusca.toLowerCase());
+        return bateCategoria && bateBusca;
+      });
+
+      if (filtrados.length === 0) {
+        vitrineEl.innerHTML = "<p>Nenhuma peça encontrada com esse filtro.</p>";
+        return;
+      }
+
+      filtrados.forEach((produto) => {
+        const jaNaSacola = sacola.some((item) => item.id === produto.id);
+
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="card-img-wrapper">
+            <span class="tag-condicao">${produto.condicao}</span>
+            <img src="${produto.imagem}" alt="${produto.nome}">
+          </div>
+          <div class="card-info">
+            <h3>${produto.nome}</h3>
+            <p class="detalhes">Tamanho: <strong>${produto.tamanho}</strong> • Peça única</p>
+            <p class="preco">${formatarMoeda(produto.preco)}</p>
+            <button
+              class="btn-adicionar"
+              onclick="adicionarNaSacola(${produto.id})"
+              ${jaNaSacola ? "disabled" : ""}
+            >
+              ${jaNaSacola ? "Reservado na sacola" : "Adicionar à sacola"}
+            </button>
+          </div>
+        `;
+        vitrineEl.appendChild(card);
+      });
+    }
+
+    function adicionarNaSacola(id) {
+      const produto = produtos.find((p) => p.id === id);
+      if (produto && !sacola.some((item) => item.id === id)) {
+        sacola.push(produto);
+        atualizarSacola();
+        renderizarVitrine();
+      }
+    }
+
+    function removerDaSacola(id) {
+      sacola = sacola.filter((item) => item.id !== id);
+      atualizarSacola();
+      renderizarVitrine();
+    }
+
+    function atualizarSacola() {
+      contadorCarrinhoEl.textContent = sacola.length;
+      listaCarrinhoEl.innerHTML = "";
+
+      let total = 0;
+
+      sacola.forEach((item) => {
+        total += item.preco;
+        const li = document.createElement("li");
+        li.className = "item-carrinho";
+        li.innerHTML = `
+          <div>
+            <strong>${item.nome}</strong><br>
+            <small>Tam: ${item.tamanho} — ${formatarMoeda(item.preco)}</small>
+          </div>
+          <button class="btn-remover" onclick="removerDaSacola(${item.id})">Remover</button>
+        `;
+        listaCarrinhoEl.appendChild(li);
+      });
+
+      valorTotalEl.textContent = formatarMoeda(total);
+    }
+
+    botoesFiltro.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        botoesFiltro.forEach((b) => b.classList.remove("ativo"));
+        btn.classList.add("ativo");
+        categoriaAtual = btn.dataset.categoria;
+        renderizarVitrine();
+      });
+    });
+
+    campoBuscaEl.addEventListener("input", (e) => {
+      termoBusca = e.target.value;
+      renderizarVitrine();
+    });
+
+    document.getElementById("btn-carrinho").addEventListener("click", () => {
+      modalCarrinhoEl.classList.remove("oculto");
+    });
+
+    document.getElementById("fechar-carrinho").addEventListener("click", () => {
+      modalCarrinhoEl.classList.add("oculto");
+    });
+
+    document.getElementById("finalizar-pedido").addEventListener("click", () => {
+      if (sacola.length === 0) {
+        alert("Sua sacola está vazia!");
+        return;
+      }
+      alert(`Reserva realizada com sucesso! Total: ${valorTotalEl.textContent}`);
+      sacola = [];
+      atualizarSacola();
+      renderizarVitrine();
+      modalCarrinhoEl.classList.add("oculto");
+    });
+
+    renderizarVitrine();
+  </script>
+</body>
+</html>
