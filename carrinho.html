@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Closet Mix | Carrinho</title>
+
+    <!-- CSS DO CARRINHO -->
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+
+<body>
+
+    <main class="site">
+
+        <!-- ==========================================
+             CABEÇALHO
+        =========================================== -->
+
+        <header class="topo">
+
+            <!-- BOTÃO MENU -->
+            <button
+                type="button"
+                class="menu-botao"
+                id="menuBotao"
+                aria-label="Abrir menu"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <!-- LOGO -->
+            <a href="inicio.html" class="logo">
+                <img src="imagens/LOGOS.png" alt="Closet Mix">
+            </a>
+
+            <!-- CARRINHO -->
+            <a href="carrinho.html" class="carrinho">
+                ♡
+                <span id="quantidadeCarrinho">0</span>
+            </a>
+
+        </header>
+
+
+        <!-- ==========================================
+             MENU LATERAL
+        =========================================== -->
+
+        <nav class="menu-lateral" id="menuLateral">
+
+            <h2 class="sidebar-title">MENU</h2>
+
+            <a href="inicio.html">Início</a>
+            <a href="entrou.html">Explorar</a>
+            <a href="closet.html">Catálogo</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="entrou.html#categorias">Categorias</a>
+
+        </nav>
+
+        <!-- FUNDO DO MENU -->
+        <div class="fundo-menu" id="fundoMenu"></div>
+
+
+        <!-- ==========================================
+             CONTEÚDO DO CARRINHO
+        =========================================== -->
+
+        <section class="conteudo">
+
+            <!-- TÍTULO -->
+            <header class="titulo-pagina">
+
+                <h1>Meu carrinho</h1>
+
+                <p>
+                    Confira suas peças antes de continuar.
+                </p>
+
+            </header>
+
+
+            <!-- ======================================
+                 LISTA DE PRODUTOS
+            ======================================= -->
+
+            <section class="area-carrinho">
+
+                <div
+                    id="listaCarrinho"
+                    class="lista-carrinho">
+
+                    <!-- Produtos inseridos pelo JavaScript -->
+
+                </div>
+
+
+                <!-- ==================================
+                     CARRINHO VAZIO
+                =================================== -->
+
+                <div
+                    id="carrinhoVazio"
+                    class="carrinho-vazio"
+                    hidden>
+
+                    <span class="icone-vazio">♡</span>
+
+                    <h2>Seu carrinho está vazio</h2>
+
+                    <p>
+                        Que tal encontrar algo especial?
+                    </p>
+
+                    <a href="closet.html" class="botao-comprar">
+                        Explorar catálogo
+                    </a>
+
+                </div>
+
+
+                <!-- ==================================
+                     RESUMO DO PEDIDO
+                =================================== -->
+
+                <aside
+                    id="resumoCarrinho"
+                    class="resumo-carrinho">
+
+                    <h2>Resumo do pedido</h2>
+
+                    <div class="linha-resumo">
+
+                        <span>Subtotal</span>
+
+                        <span id="subtotalCarrinho">
+                            R$ 0,00
+                        </span>
+
+                    </div>
+
+
+                    <div class="linha-resumo">
+
+                        <span>Frete</span>
+
+                        <span id="freteCarrinho">
+                            A calcular
+                        </span>
+
+                    </div>
+
+
+                    <div class="linha-resumo total">
+
+                        <span>Total</span>
+
+                        <span id="totalCarrinho">
+                            R$ 0,00
+                        </span>
+
+                    </div>
+
+
+                    <!-- FINALIZAR COMPRA -->
+                    <button
+                        type="button"
+                        id="finalizarCompra"
+                        class="botao-finalizar">
+
+                        Finalizar compra
+
+                    </button>
+
+
+                    <!-- CONTINUAR COMPRANDO -->
+                    <a
+                        href="closet.html"
+                        class="continuar-comprando">
+
+                        Continuar comprando
+
+                    </a>
+
+                </aside>
+
+            </section>
+
+        </section>
+
+
+        <!-- ==========================================
+             RODAPÉ
+        =========================================== -->
+
+        <footer class="rodape">
+
+            <p>Closet Mix © 2026</p>
+
+            <p>Moda acessível, estilo e sustentabilidade.</p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==============================================
+         JAVASCRIPT
+    =============================================== -->
+
+    <!-- MENU SANDUÍCHE -->
+    <script src="javascript/menu.js"></script>
+
+    <!-- CARRINHO -->
+    <script src="javascript/carrinho.js"></script>
+
+</body>
+
+</html>
