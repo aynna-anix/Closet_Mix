@@ -1,0 +1,568 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closet Mix | Pedidos</title>
+    <link rel="stylesheet" href="admin.css">
+
+    <style>
+        body {
+            background: #F8F5EF;
+            color: #35434A;
+            font-family: Arial, sans-serif;
+        }
+
+        .pedidos-container {
+            padding: 25px;
+        }
+
+        .topo-pedidos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .topo-pedidos h1 {
+            color: #35434A;
+            margin-bottom: 6px;
+        }
+
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .filtros input,
+        .filtros select,
+        .modal-pedido select {
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            background: white;
+            color: #35434A;
+        }
+
+        .tabela-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #E8D8BC;
+            color: #35434A;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .aguardando_pagamento { background: #fff0c2; }
+        .pago { background: #d9eddf; }
+        .em_separacao { background: #dce8f5; }
+        .enviado { background: #e8def5; }
+        .entregue { background: #ccebd8; }
+        .cancelado { background: #f5dada; }
+
+        .btn-detalhes,
+        .btn-fechar {
+            border: none;
+            padding: 9px 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #397C91;
+            color: white;
+        }
+
+        .btn-detalhes:hover {
+            background: #35434A;
+        }
+
+        .modal-pedido {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .modal-conteudo {
+            background: white;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .modal-cabecalho {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-cabecalho h2 {
+            font-size: 21px;
+        }
+
+        .btn-fechar {
+            background: #35434A;
+        }
+
+        .detalhe-linha {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .lista-itens {
+            margin: 12px 0;
+            padding-left: 20px;
+        }
+
+        .acoes-pedido {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .mensagem {
+            padding: 15px;
+            text-align: center;
+            color: #727272;
+        }
+
+        @media (max-width: 600px) {
+            .pedidos-container {
+                padding: 15px;
+            }
+
+            .filtros input,
+            .filtros select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<main class="pedidos-container">
+
+    <header class="topo-pedidos">
+        <div>
+            <h1>Pedidos</h1>
+            <p>Acompanhe as compras realizadas na Closet Mix.</p>
+        </div>
+    </header>
+
+    <section class="filtros">
+        <input
+            type="search"
+            id="pesquisa"
+            placeholder="Buscar por número ou cliente..."
+        >
+
+        <select id="filtroStatus">
+            <option value="">Todos os status</option>
+            <option value="aguardando_pagamento">Aguardando pagamento</option>
+            <option value="pago">Pago</option>
+            <option value="em_separacao">Em separação</option>
+            <option value="enviado">Enviado</option>
+            <option value="entregue">Entregue</option>
+            <option value="cancelado">Cancelado</option>
+        </select>
+
+        <button class="btn-detalhes" onclick="carregarPedidos()">
+            Atualizar
+        </button>
+    </section>
+
+    <section class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaPedidos">
+                <tr>
+                    <td colspan="6" class="mensagem">Carregando pedidos...</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<!-- Modal com detalhes do pedido -->
+<div class="modal-pedido" id="modalPedido">
+    <div class="modal-conteudo">
+
+        <div class="modal-cabecalho">
+            <h2>Detalhes do pedido</h2>
+            <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+        </div>
+
+        <div id="conteudoDetalhes">
+            Carregando informações...
+        </div>
+
+        <div class="acoes-pedido">
+            <label for="novoStatus"><strong>Atualizar status:</strong></label>
+
+            <select id="novoStatus">
+                <option value="aguardando_pagamento">Aguardando pagamento</option>
+                <option value="pago">Pago</option>
+                <option value="em_separacao">Em separação</option>
+                <option value="enviado">Enviado</option>
+                <option value="entregue">Entregue</option>
+                <option value="cancelado">Cancelado</option>
+            </select>
+
+            <button class="btn-detalhes" onclick="atualizarStatus()">
+                Salvar alteração
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Endereço da API do sistema
+    const API = "http://localhost:3000/api";
+
+    let pedidoSelecionado = null;
+    let todosPedidos = [];
+
+    // Converte o status para um texto legível
+    function nomeStatus(status) {
+        const nomes = {
+            aguardando_pagamento: "Aguardando pagamento",
+            pago: "Pago",
+            em_separacao: "Em separação",
+            enviado: "Enviado",
+            entregue: "Entregue",
+            cancelado: "Cancelado"
+        };
+
+        return nomes[status] || status || "Não informado";
+    }
+
+    // Formata valores em reais
+    function formatarMoeda(valor) {
+        return Number(valor || 0).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+    }
+
+    // Formata a data do pedido
+    function formatarData(data) {
+        if (!data) return "Não informada";
+
+        const dataFormatada = new Date(data);
+
+        if (Number.isNaN(dataFormatada.getTime())) {
+            return "Não informada";
+        }
+
+        return dataFormatada.toLocaleDateString("pt-BR");
+    }
+
+    // Evita inserir texto recebido da API diretamente como HTML
+    function escaparHTML(valor) {
+        return String(valor ?? "").replace(/[&<>"']/g, caractere => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;"
+        })[caractere]);
+    }
+
+    // Busca os pedidos no banco através do backend
+    async function carregarPedidos() {
+        const tabela = document.getElementById("listaPedidos");
+
+        tabela.innerHTML = `
+            <tr>
+                <td colspan="6" class="mensagem">Carregando...</td>
+            </tr>
+        `;
+
+        try {
+            const resposta = await fetch(`${API}/admin/pedidos`, {
+                credentials: "include"
+            });
+
+            if (!resposta.ok) {
+                throw new Error("Não foi possível carregar os pedidos.");
+            }
+
+            const dados = await resposta.json();
+
+            todosPedidos = Array.isArray(dados)
+                ? dados
+                : dados.pedidos || [];
+
+            mostrarPedidos();
+
+        } catch (erro) {
+            tabela.innerHTML = `
+                <tr>
+                    <td colspan="6" class="mensagem">
+                        ${escaparHTML(erro.message)}
+                        <br>Verifique se o servidor está ligado.
+                    </td>
+                </tr>
+            `;
+        }
+    }
+
+    // Exibe os pedidos na tabela
+    function mostrarPedidos() {
+        const tabela = document.getElementById("listaPedidos");
+        const pesquisa = document.getElementById("pesquisa").value
+            .toLowerCase();
+
+        const statusFiltro = document.getElementById("filtroStatus").value;
+
+        const filtrados = todosPedidos.filter(pedido => {
+            const id = String(pedido.id_pedido ?? pedido.id ?? "");
+            const cliente = String(
+                pedido.cliente ?? pedido.nome_cliente ?? ""
+            ).toLowerCase();
+
+            const correspondePesquisa =
+                id.includes(pesquisa) || cliente.includes(pesquisa);
+
+            const correspondeStatus =
+                !statusFiltro || pedido.status === statusFiltro;
+
+            return correspondePesquisa && correspondeStatus;
+        });
+
+        if (filtrados.length === 0) {
+            tabela.innerHTML = `
+                <tr>
+                    <td colspan="6" class="mensagem">
+                        Nenhum pedido encontrado.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        tabela.innerHTML = filtrados.map(pedido => {
+            const id = Number(pedido.id_pedido ?? pedido.id);
+            const status = pedido.status || "";
+
+            return `
+                <tr>
+                    <td>#${id}</td>
+                    <td>${escaparHTML(
+                        pedido.cliente ?? pedido.nome_cliente ?? "Cliente"
+                    )}</td>
+                    <td>${formatarData(pedido.data_pedido)}</td>
+                    <td>${formatarMoeda(pedido.valor_total)}</td>
+                    <td>
+                        <span class="status ${escaparHTML(status)}">
+                            ${escaparHTML(nomeStatus(status))}
+                        </span>
+                    </td>
+                    <td>
+                        <button
+                            class="btn-detalhes"
+                            onclick="abrirDetalhes(${id})">
+                            Ver detalhes
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join("");
+    }
+
+    // Abre os detalhes de um pedido
+    async function abrirDetalhes(id) {
+        pedidoSelecionado = id;
+
+        const modal = document.getElementById("modalPedido");
+        const conteudo = document.getElementById("conteudoDetalhes");
+
+        modal.style.display = "flex";
+        conteudo.textContent = "Carregando informações...";
+
+        try {
+            const resposta = await fetch(
+                `${API}/admin/pedidos/${id}`,
+                { credentials: "include" }
+            );
+
+            if (!resposta.ok) {
+                throw new Error("Não foi possível carregar os detalhes.");
+            }
+
+            const dados = await resposta.json();
+
+            const pedido = dados.pedido || dados;
+            const itens = dados.itens || pedido.itens || [];
+            const pagamento = dados.pagamento || pedido.pagamento || {};
+
+            document.getElementById("novoStatus").value =
+                pedido.status || "aguardando_pagamento";
+
+            conteudo.innerHTML = `
+                <div class="detalhe-linha">
+                    <strong>Número:</strong> #${escaparHTML(
+                        pedido.id_pedido ?? pedido.id ?? id
+                    )}
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Cliente:</strong> ${escaparHTML(
+                        pedido.cliente ?? pedido.nome_cliente ?? "Não informado"
+                    )}
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Data:</strong> ${formatarData(pedido.data_pedido)}
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Produtos:</strong>
+                    ${
+                        itens.length
+                        ? `<ul class="lista-itens">
+                            ${itens.map(item => `
+                                <li>
+                                    ${escaparHTML(item.nome_produto)}
+                                    — ${escaparHTML(item.quantidade)} unidade(s)
+                                    — ${formatarMoeda(
+                                        item.total_item ??
+                                        Number(item.preco_unitario || 0) *
+                                        Number(item.quantidade || 0)
+                                    )}
+                                </li>
+                            `).join("")}
+                        </ul>`
+                        : "<p>Os itens não foram encontrados.</p>"
+                    }
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Pagamento:</strong>
+                    ${escaparHTML(pagamento.metodo || "Não informado")}
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Status do pagamento:</strong>
+                    ${escaparHTML(pagamento.status || "Não informado")}
+                </div>
+
+                <div class="detalhe-linha">
+                    <strong>Valor total:</strong>
+                    ${formatarMoeda(pedido.valor_total)}
+                </div>
+            `;
+
+        } catch (erro) {
+            conteudo.textContent = erro.message;
+        }
+    }
+
+    // Atualiza o status do pedido
+    async function atualizarStatus() {
+        if (!pedidoSelecionado) return;
+
+        const novoStatus = document.getElementById("novoStatus").value;
+
+        try {
+            const resposta = await fetch(
+                `${API}/admin/pedidos/${pedidoSelecionado}`,
+                {
+                    method: "PATCH",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ status: novoStatus })
+                }
+            );
+
+            const dados = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(dados.erro || "Não foi possível atualizar.");
+            }
+
+            alert("Status do pedido atualizado!");
+
+            fecharModal();
+            carregarPedidos();
+
+        } catch (erro) {
+            alert(erro.message);
+        }
+    }
+
+    // Fecha a janela de detalhes
+    function fecharModal() {
+        document.getElementById("modalPedido").style.display = "none";
+        pedidoSelecionado = null;
+    }
+
+    // Atualiza a tabela quando os filtros mudarem
+    document.getElementById("pesquisa").addEventListener(
+        "input",
+        mostrarPedidos
+    );
+
+    document.getElementById("filtroStatus").addEventListener(
+        "change",
+        mostrarPedidos
+    );
+
+    // Carrega os pedidos ao abrir a página
+    carregarPedidos();
+</script>
+
+</body>
+</html>
